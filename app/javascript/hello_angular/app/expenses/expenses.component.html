@@ -1,0 +1,25 @@
+<div class="app">
+    <div class="app__user-info">
+        <img src="https://avatars.dicebear.com/v2/gridy/{{userId}}.svg">
+        <button class="app__logout" type="button" (click)="logout()">Logout</button>
+    </div>
+    <div class="app__select-date" [formGroup]="expenseForm">
+        <input type="date" class="app__select-date-input" formControlName="date" (change)="getExpenses(expenseDate.value)" #expenseDate>
+    </div>
+    <form class="app__add-expense-form" [formGroup]="expenseForm" (ngSubmit)="addExpense(expenseDate.value)">
+        <input class="app__add-expense-form-title" type="text" placeholder="expense title" required formControlName="title">
+        <select class="app__add-expense-form-type" required formControlName="category">
+            <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+        </select>
+        <input class="app__add-expense-form-amount" placeholder="amount" type="number" step="0.01" required formControlName="amount">
+        <input class="app__add-expense-form-currency" type="text" formControlName="currency">
+        <button class="app__add-expense-form-button">Add Expense</button>
+    </form>
+    <div class="app__expenses-list">
+        <div class="app__expense-item" *ngFor="let expense of expenses">
+            <span>{{expense.title}}</span>
+            <span>{{expense.category}}</span>
+            <span>{{expense.amount}} {{expense.currency}}</span>
+        </div>
+    </div>
+</div>

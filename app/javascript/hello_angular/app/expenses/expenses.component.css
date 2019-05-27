@@ -1,0 +1,106 @@
+.app {
+    display: grid;
+    grid-template-rows: 200px 90px 300px 1fr;
+    grid-gap: 20px;
+}
+
+.app__user-info {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    background-color: #FC7753;
+}
+
+.app__user-info>img {
+    height: 200px;
+    border: 3px solid #FC7753;
+    border-radius: 50%;
+    opacity: 1;
+    transition: .5s ease;
+}
+
+.app__logout {
+    position: absolute;
+    opacity: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: .3s ease;
+    height: 50px;
+    font-size: 16px;
+    text-align: center;
+    padding: 12px;
+    background-color: transparent;
+    border-radius: 3px;
+    color: white;
+    margin: auto;
+    cursor: pointer;
+}
+
+.app__user-info:hover>img {
+    opacity: 0.3;
+}
+
+.app__user-info:hover>.app__logout {
+    opacity: 1;
+}
+
+.app__select-date {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+
+.app__select-date-input,
+.app__add-expense-form-title,
+.app__add-expense-form-type,
+.app__add-expense-form-amount,
+.app__add-expense-form-currency {
+    margin-bottom: 10px;
+    padding: 10px 10px;
+    font-family: inherit;
+    font-size: 16px;
+    border: 1px solid #77cd99;
+    border-radius: 5px;
+    height: 50px;
+}
+
+.app__add-expense-form {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    width: 400px;
+}
+
+.app__add-expense-form-button {
+    width: 250px;
+    height: 50px;
+    font-size: 16px;
+    text-align: center;
+    padding: 12px;
+    background-color: #FC7753;
+    border-radius: 3px;
+    color: white;
+    box-shadow: 0px 0px 5px 0px #FC7753;
+    margin: auto;
+    cursor: pointer;
+}
+
+.app__expenses-list {
+    padding: 0px 20px;
+}
+
+.app__expense-item {
+    border: 1px solid grey;
+    background-color: white;
+    border-radius: 2px;
+    margin-bottom: 5px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 3fr 2fr 1fr;
+}
+
+.app__expense-item span:last-child {
+    text-align: right;
+}
