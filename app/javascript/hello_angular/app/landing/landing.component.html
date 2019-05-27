@@ -1,0 +1,72 @@
+<div class="page">
+    <div class="background-cube-gradient"></div>
+    <div class="background-cube-white"></div>
+    <div class="intro">
+          <header class="intro__header">
+                <img class="intro__header-logo"
+                     src="assets/images/logo.png"
+                     alt="Money Cat">
+                <button class="intro__header-button"
+                        type="button" (click)="scroll(target)">Try It Free</button>
+          </header>
+          <img class="intro__mockups-image"
+               src="assets/images/mockups.svg"
+               alt="mockups">
+          <div class="intro__action-block">
+                <h1>Take control of your finances</h1>
+                <p class="intro__action-block-text">Money Cat is a budget and finance tool that touts a lot of best-in-class features, as well as support for multiple currencies. The app includes automatic bank syncing for your balance and expenses.</p>
+                <button class="intro_action-block-button"
+                        type="button" (click)="scroll(target)">Get Started For Free</button>
+          </div>
+    </div>
+    <div class="features">
+          <img class="features__your-users-image"
+               src="assets/images/your-users.svg"
+               alt="users">
+          <div class="features__list">
+                <div>
+                      <h2>BUDGETING THAT WORKS</h2>
+                      <p class="features__list-text">Based on the envelope budgeting method – a time-tested system that works!</p>
+                </div>
+                <div>
+                      <h2>SYNC & SHARE BUDGETS</h2>
+                      <p class="features__list-text">Put your budget into action with the people who matter most.</p>
+                </div>
+                <div>
+                      <h2>SAVE FOR BIG EXPENSES</h2>
+                      <p class="features__list-text">Plan ahead and be prepared. No more surprises!</p>
+                </div>
+          </div>
+    </div>
+    <div class="sign-up">
+          <div class="sign-up__form-group">
+                <div class="sign-up__form-group-content">
+                      <h1>Try It Free</h1>
+                      <form class="sign-up__form"
+                            action="#"
+                            novalidate>
+                            <input class="sign-up__form-input email"
+                                   type="email"
+                                   placeholder="email"
+                                   required (input)="validateEmailForm(emailInput)"
+                                   [ngClass]="{ 'error': !emailValidity }" #emailInput>
+                            <span class="sign-up__form-input-error email"
+                                  [ngClass]="{ 'active': !emailValidity }">Incorrect email address</span>
+                            <input class="sign-up__form-input password"
+                                   type="text"
+                                   placeholder="password"
+                                   required (input)="validatePasswordForm(passwordInput)"
+                                   [ngClass]="{ 'error': !passwordValidity }" #passwordInput>
+                            <span class="sign-up__form-input-error password"
+                                  [ngClass]="{ 'active': !passwordValidity }">Password can't be empty</span>
+                            <button class="sign-up__form-button"
+                                    type="button" (click)="signUp($event, emailInput, passwordInput)" 
+                                    #target>Get Started</button>
+                      </form>
+                </div>
+          </div>
+    </div>
+    <footer class="footer">
+          <h3>© Copyright 2019 Money Cat. All rights reserved.</h3>
+    </footer>
+</div>
