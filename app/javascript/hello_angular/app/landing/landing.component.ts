@@ -1,5 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { tap } from 'rxjs/operators';
 
+import { DataService } from '../data.service';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  })
+};
 @Component({
   selector: 'app-landing',
   template: require('./landing.component.html'),
@@ -8,7 +20,11 @@ import { Component, OnInit } from '@angular/core';
 export class LandingComponent implements OnInit {
   emailValidity = true;
   passwordValidity = true;
-  constructor() { }
+  name: '';
+
+  constructor(private http: HttpClient,
+              private router: Router,
+              private dataService: DataService) { }
 
   ngOnInit() {
   }
@@ -38,6 +54,19 @@ export class LandingComponent implements OnInit {
   }
 
   signUp(event, emailInput, passwordInput) {
+    if (this.validateEmailForm(emailInput) && this.validatePasswordForm(passwordInput)) {
+      this.dataService.login(emailInput.value, passwordInput.value)
+        .subscribe(_ => this.router.navigate(['app']));
+    } else {
+      event.preventDefault();
+    }
+  }
 
+  changeName() {
+    this.http.post<any>('/login', { sdfsdf: 'sdfsdg', sdfsdg: 'password' }, httpOptions).subscribe(data => console.log(data['name']));
+  }
+
+  navigate() {
+    this.http.get('/home/show').subscribe(data => console.log(data['name']));
   }
 }
