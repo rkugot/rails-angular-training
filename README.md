@@ -1,24 +1,35 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This Rails project using Webpacker with Angular
 
-Things you may want to cover:
+## Using a separate file for html
 
-* Ruby version
+Require this file to component using `template` instead of `templateUrl`:
+```js
+import { Component } from '@angular/core';
 
-* System dependencies
+@Component({
+  selector: 'hello-angular',
+  template: require('./app.component.html'),
+})
+export class AppComponent {}
+```
+## Using a separate file for css
 
-* Configuration
+Require this file to component using `styles` instead of `styleUrls` and serve it as a string:
+```js
+import { Component } from '@angular/core';
 
-* Database creation
+@Component({
+  selector: 'hello-angular',
+  styles: [require('./app.component.css').toString()],
+})
+export class AppComponent {}
+```
 
-* Database initialization
+## Using images from Angular assets folder
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Add `['app/assets']` to `resolved_paths` in `webpacker.yml` and you can serve images in component template this way:
+```html
+<img class="logo" src="assets/images/logo.png" >
+```
