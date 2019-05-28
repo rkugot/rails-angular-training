@@ -24,14 +24,14 @@ export class DataService {
   }
 
   getCategories(): Observable<any> {
-    return this.http.get<any>('/expenseCategories', httpOptions)
+    return this.http.get<any>('/categories', httpOptions)
   }
 
   getExpenses(): Observable<any> {
-    return this.http.get<any>('/users/${this.userService.userId}/expenses', httpOptions)
+    return this.http.get<any>(`/users/${this.userService.userId}/expenses`, httpOptions)
   }
 
   addExpense(formData): Observable<any> {
-    return this.http.post<any>('/users/${this.userService.userId}/expense', formData, httpOptions)
+    return this.http.post<any>(`/users/${this.userService.userId}/expense`, formData, httpOptions)
   }
 }
